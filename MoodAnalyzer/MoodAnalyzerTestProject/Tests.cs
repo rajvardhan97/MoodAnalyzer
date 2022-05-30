@@ -62,7 +62,7 @@ namespace MoodAnalyzerTestProject
         [Test]
         public void GiveMessageInAnyMoodshouldReturnSAD()
         {
-            string message = "I am in sad mood";
+            string message = "I am in Happy mood";
             MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
             string expected = "Sad";
@@ -77,13 +77,48 @@ namespace MoodAnalyzerTestProject
         [Test]
         public void HandleNullExceptionReturnHappy()
         {
-            string message = "";
+            string message = null;
             MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
 
             string expected = "Happy";
             string actual = moodAnalyzer.analyzeMood();
 
             Assert.AreEqual(expected, actual);
+        }
+
+        // <summary>
+        // TC 3.1:Given NULL Mood Should Throw MoodAnalysisException
+        // </summary>
+        [Test]
+        public void NullMoodShouldThrowCustomException()
+        {
+            string message = null;
+            string expected = "Mood should not be NULL";
+            try
+            {
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+            }
+            catch(CustomException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
+
+        // <summary>
+        // TC 3.2: Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
+        // </summary>
+        public void EmptyMoodShouldThrowCustomException()
+        {
+            string message = " ";
+            string expected = "Mood should not be Empty";
+            try
+            {
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+            }
+            catch(CustomException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
         }
     }
 }

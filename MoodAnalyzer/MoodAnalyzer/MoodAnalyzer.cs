@@ -25,20 +25,23 @@ namespace MoodAnalyzerTestProject
                 return "Happy";
             }
         }
-        //summary
-        //Refactor code to take message through Constructor
-        //summary
+        // <summary>
+        // Refactor code to take message through Constructor
+        // <summary>
 
         public MoodAnalyzer(string Message)
         {
-            this.message= "im in happy";
+            this.message= Message;
         }
         public string analyzeMood()
         {
-            this.message = message;
             try
             {
-                if (this.message.Contains("sad"))
+                if(this.message.Contains(string.Empty))
+                {
+                    throw new CustomException(CustomException.Exceptiontype.EmptyMood, "Mood should not be Empty");
+                }
+                else if (this.message.Contains("sad"))
                 {
                     return "Sad";
                 }
@@ -49,7 +52,7 @@ namespace MoodAnalyzerTestProject
             }
             catch (NullReferenceException)
             {
-                return "Happy";
+                throw new CustomException(CustomException.Exceptiontype.EmptyNULL, "Mood should not be NULL");
             }
         }
     }
