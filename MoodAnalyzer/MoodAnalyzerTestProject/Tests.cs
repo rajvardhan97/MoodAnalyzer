@@ -4,15 +4,14 @@ namespace MoodAnalyzerTestProject
 {
     public class Tests
     {
-<<<<<<< HEAD
-=======
+
         MoodAnalyzer analyzer;
         [SetUp]
         public void Setup()
         {
             analyzer = new MoodAnalyzer();        
         }
->>>>>>> UC1-HappyOrSad
+
         // <summary>
         // TC 1.1: Given "I am  in Sad Mood" message Should Return SAD.
         // </summary>
@@ -20,11 +19,7 @@ namespace MoodAnalyzerTestProject
         public void GivenIaminSadMoodReturnSAD()
         {
             string message = "I am in sad mood";
-<<<<<<< HEAD
-            MoodAnalyzer analyzer = new MoodAnalyzer();
-=======
             analyzer = new MoodAnalyzer();
->>>>>>> UC1-HappyOrSad
 
             string expected = "Sad";
             string actual = analyzer.analyzeMood(message);
@@ -33,32 +28,22 @@ namespace MoodAnalyzerTestProject
         }
 
         // <summary>
-<<<<<<< HEAD
         /// TC 1.2: Given "I am  in Any Mood" message Should Return HAPPY.
-=======
-        // TC 1.2: Given "I am  in Any Mood" message Should Return HAPPY.
->>>>>>> UC1-HappyOrSad
         // </summary>
         [Test]
         public void GivenAnyMoodShouldReturnHAPPY()
         {
             string message = "I am in Any Mood";
-<<<<<<< HEAD
-            MoodAnalyzer Analyzer = new MoodAnalyzer();
-
-            string expected = "HAPPY";
-            string actual = Analyzer.analyzeMood(message);
-=======
             analyzer = new MoodAnalyzer();
 
-            string expected = "Happy";
+            string expected = "HAPPY";
             string actual = analyzer.analyzeMood(message);
 
             Assert.AreEqual(expected, actual);
         }
 
         // <summary>
-        // Refactor TC 1.1:Given ìI am in Sad Moodî message in Constructor Should Return SAD
+        // Refactor TC 1.1:Given ‚ÄúI am in Sad Mood‚Äù message in Constructor Should Return SAD
         // </summary>
         [Test]
         public void GiveMessageinConstructorandReturnSAD()
@@ -72,7 +57,7 @@ namespace MoodAnalyzerTestProject
             Assert.AreEqual(expected, actual);
         }
         // <summary>
-        // Refactor TC 1.2:Given ìI am in Happy Moodî message in Constructor Should Return SAD
+        // Refactor TC 1.2:Given ‚ÄúI am in Happy Mood‚Äù message in Constructor Should Return SAD
         // </summary>
         [Test]
         public void GiveMessageInAnyMoodshouldReturnSAD()
@@ -82,7 +67,6 @@ namespace MoodAnalyzerTestProject
 
             string expected = "Sad";
             string actual = moodAnalyzer.analyzeMood();
->>>>>>> UC1-HappyOrSad
 
             Assert.AreEqual(expected, actual);
         }
