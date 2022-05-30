@@ -4,15 +4,14 @@ namespace MoodAnalyzerTestProject
 {
     public class Tests
     {
-<<<<<<< HEAD
-=======
         MoodAnalyzer analyzer;
+
         [SetUp]
         public void Setup()
         {
             analyzer = new MoodAnalyzer();        
         }
->>>>>>> UC1-HappyOrSad
+
         // <summary>
         // TC 1.1: Given "I am  in Sad Mood" message Should Return SAD.
         // </summary>
@@ -20,11 +19,7 @@ namespace MoodAnalyzerTestProject
         public void GivenIaminSadMoodReturnSAD()
         {
             string message = "I am in sad mood";
-<<<<<<< HEAD
-            MoodAnalyzer analyzer = new MoodAnalyzer();
-=======
             analyzer = new MoodAnalyzer();
->>>>>>> UC1-HappyOrSad
 
             string expected = "Sad";
             string actual = analyzer.analyzeMood(message);
@@ -33,22 +28,12 @@ namespace MoodAnalyzerTestProject
         }
 
         // <summary>
-<<<<<<< HEAD
         /// TC 1.2: Given "I am  in Any Mood" message Should Return HAPPY.
-=======
-        // TC 1.2: Given "I am  in Any Mood" message Should Return HAPPY.
->>>>>>> UC1-HappyOrSad
         // </summary>
         [Test]
         public void GivenAnyMoodShouldReturnHAPPY()
         {
             string message = "I am in Any Mood";
-<<<<<<< HEAD
-            MoodAnalyzer Analyzer = new MoodAnalyzer();
-
-            string expected = "HAPPY";
-            string actual = Analyzer.analyzeMood(message);
-=======
             analyzer = new MoodAnalyzer();
 
             string expected = "Happy";
@@ -63,11 +48,11 @@ namespace MoodAnalyzerTestProject
         [Test]
         public void GiveMessageinConstructorandReturnSAD()
         {
-            string message = "I am in Sad Mood";
-            MoodAnalyzer moodanalyzer = new MoodAnalyzer(message);
+            string message = "I am in Sad mood";
+            MoodAnalyzer moodanalyzer = new MoodAnalyzer();
 
             string expected = "Sad";
-            string actual = moodanalyzer.analyzeMood();
+            string actual = moodanalyzer.analyzeMood(message);
 
             Assert.AreEqual(expected, actual);
         }
@@ -77,12 +62,26 @@ namespace MoodAnalyzerTestProject
         [Test]
         public void GiveMessageInAnyMoodshouldReturnSAD()
         {
-            string message = "I am in Happy mood";
-            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+            string message = "I am in sad mood";
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
             string expected = "Sad";
+            string actual = moodAnalyzer.analyzeMood(message);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        // <summary>
+        // TC 2.1:Given Null Mood Should Return Happy
+        // </summary>
+        [Test]
+        public void HandleNullExceptionReturnHappy()
+        {
+            string message = "";
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+
+            string expected = "Happy";
             string actual = moodAnalyzer.analyzeMood();
->>>>>>> UC1-HappyOrSad
 
             Assert.AreEqual(expected, actual);
         }

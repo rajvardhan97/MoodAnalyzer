@@ -6,7 +6,7 @@ namespace MoodAnalyzerTestProject
     {
         public static void Main(string[] args)
         {
-            //using default constructor
+            using default constructor
             Console.WriteLine("Enter the message");
             string INPUT = Console.ReadLine();
             string message = INPUT.ToLower();

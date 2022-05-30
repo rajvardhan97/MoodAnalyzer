@@ -11,7 +11,7 @@ namespace MoodAnalyzerTestProject
         string message;
         public MoodAnalyzer()
         {
-            this.message = "I am in Sad mood";
+            this.message = "I am in any mood";
         }
         public string analyzeMood(string message)
         {
@@ -31,16 +31,23 @@ namespace MoodAnalyzerTestProject
 
         public MoodAnalyzer(string Message)
         {
-            this.message= Message;
+            this.message= "im in happy";
         }
         public string analyzeMood()
         {
             this.message = message;
-            if(this.message.Contains("sad"))
+            try
             {
-                return "Sad";
+                if (this.message.Contains("sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "Happy";
+                }
             }
-            else
+            catch (NullReferenceException)
             {
                 return "Happy";
             }
