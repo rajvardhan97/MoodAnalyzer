@@ -55,5 +55,22 @@ namespace MoodAnalyzerTestProject
                 throw new CustomException(CustomException.Exceptiontype.NoConstructor, "Constructor Not Found");
             }
         }
+        // UC 6:Use Reflection to invoke Method analyseMood
+        public string AnalyzeMood(string MethodName, string Message)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyzerFactory.MoodAnalyser");
+                MoodAnalyzerFactory moodAnalyzerFactory = new MoodAnalyzerFactory();
+                Object obj = moodAnalyzerFactory.MoodAnalyzerParameterisedConstructor("MoodAnalyzerFactory.MoodAnalyser", "Happy Mood");
+                MethodInfo methodInfo = type.GetMethod(MethodName);
+                Object mood = methodInfo.Invoke(obj, null);
+                return mood.ToString();
+            }
+            catch(NullReferenceException)
+            {
+                throw new CustomException(CustomException.Exceptiontype.NoConstructor, "Constructor Not Found");
+            }
+        }
     }
 }
