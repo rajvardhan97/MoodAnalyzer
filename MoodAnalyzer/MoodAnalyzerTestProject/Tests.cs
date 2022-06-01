@@ -5,11 +5,13 @@ namespace MoodAnalyzerTestProject
     public class Tests
     {
         MoodAnalyzer analyzer;
+        MoodAnalyzerFactory factory;
 
         [SetUp]
         public void Setup()
         {
-            analyzer = new MoodAnalyzer();        
+            analyzer = new MoodAnalyzer();
+            factory = new MoodAnalyzerFactory();
         }
 
         // <summary>
@@ -98,7 +100,7 @@ namespace MoodAnalyzerTestProject
             {
                 MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
             }
-            catch(CustomException exception)
+            catch (CustomException exception)
             {
                 Assert.AreEqual(expected, exception.Message);
             }
@@ -107,6 +109,7 @@ namespace MoodAnalyzerTestProject
         // <summary>
         // TC 3.2: Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
         // </summary>
+        [Test]
         public void EmptyMoodShouldThrowCustomException()
         {
             string message = " ";
@@ -114,6 +117,54 @@ namespace MoodAnalyzerTestProject
             try
             {
                 MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+            }
+            catch (CustomException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
+
+        // <summary>
+        // TC 4.1: Given MoodAnalyser Class Name Should Return MoodAnalyser Object
+        // </summary>
+        [Test]
+        public void MoodAnalyzerClassShouldReturnMoodAnalyzerObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyzer(message);
+            object obj = MoodAnalyzerFactory.MoodAnalyser("MoodAnalyzerFactory.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
+        }
+
+        // <summary>
+        // TC 4.2: Given Class Name When Improper Should Throw MoodAnalysisException
+        // </summary>
+        [Test]
+        public void ClassNameWhenImproperThrowMoodAnalysisException()
+        {
+            string expected = "No such class";
+            try
+            {
+                object obj = MoodAnalyzerFactory.MoodAnalyser("MoodAnalyzerFactory.MoodAnalyser", "MoodAnalyser");
+
+            }
+            catch(CustomException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
+
+        // <summary>
+        // TC 4.3: Given Class When Constructor Not Proper Should Throw MoodAnalysisException
+        // </summary>
+        [Test]
+        public void ClassMoodAnalyserWhenConstructorImproperThrowMoodAnalysisException()
+        {
+            object obj = null;
+            string expected = "Constructor Not Found";
+            try
+            {
+                obj = MoodAnalyzerFactory.MoodAnalyser("MoodAnalyzerFactory.MoodAnalyser", "MoodAnalyzer");
             }
             catch(CustomException exception)
             {

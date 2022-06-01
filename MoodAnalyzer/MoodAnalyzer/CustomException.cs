@@ -11,8 +11,7 @@ namespace MoodAnalyzerTestProject
         Exceptiontype type;
         public enum Exceptiontype
         {
-            EmptyMood,
-            EmptyNULL
+            EmptyMood,EmptyNULL, NoClass, NoConstructor
         }
         public CustomException(Exceptiontype type, string message) : base(message)
         {
