@@ -33,5 +33,27 @@ namespace MoodAnalyzerTestProject
                 throw new CustomException(CustomException.Exceptiontype.NoConstructor, "Constructor Not Found");
             }
         }
+        // UC 5:Use Reflection to Create MoodAnalyser with Parameter Constructor
+        public object MoodAnalyzerParameterisedConstructor(string className, string constructorName)
+        {
+            Type type = typeof(MoodAnalyzer);
+            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+                try
+                {
+                    ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string[]) });
+                    object obj = constructorInfo.Invoke(new object[] { "Im in a mood" });
+                    return obj;
+                }
+                catch
+                {
+                    throw new CustomException(CustomException.Exceptiontype.NoClass, "No such class");
+                }
+            }
+            else
+            {
+                throw new CustomException(CustomException.Exceptiontype.NoConstructor, "Constructor Not Found");
+            }
+        }
     }
 }

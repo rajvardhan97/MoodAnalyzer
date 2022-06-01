@@ -6,6 +6,7 @@ namespace MoodAnalyzerTestProject
     {
         MoodAnalyzer analyzer;
         MoodAnalyzerFactory factory;
+        MoodAnalyzerFactory moodAnalyzerFactory = new MoodAnalyzerFactory();
 
         [SetUp]
         public void Setup()
@@ -169,6 +170,51 @@ namespace MoodAnalyzerTestProject
             catch(CustomException exception)
             {
                 Assert.AreEqual(expected, exception.Message);
+            }
+        }
+
+        // <summary>
+        // TC 5.1: Given MoodAnalyser When Proper Return MoodAnalyser Object
+        // </summary>
+        [Test]
+        public void MoodAnalyserClass_Should_Return_Object_Using_ParameterisedConstructor()
+        {
+            object expected = new MoodAnalyzer();
+            object obj = moodAnalyzerFactory.MoodAnalyzerParameterisedConstructor("MoodAnalyzerFactory.MoodAnalyzerParameterisedConstructor", "MoodAnalyzerParameterisedConstructor");
+            Assert.AreEqual(expected, obj);
+        }
+
+        // <summary>
+        // TC 5.2: Given Class Name When Improper Should Throw MoodAnalysisException
+        // </summary>
+        [Test]
+        public void MoodAnalyserClass_Improper_ThrowMoodAnalysisException()
+        {
+            string expected = "Class not found";
+            try
+            {
+                object obj = moodAnalyzerFactory.MoodAnalyzerParameterisedConstructor("MoodAnalyzerFactory.MoodAnalyzerParameterisedConstructor", "MoodAnalyzerParameterisedConstructor");
+            }
+            catch(CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+
+        // <summary>
+        // TC 5.3:Given Class When Constructor Not Proper Should Throw MoodAnalysisException
+        // </summary>
+        [Test]
+        public void MoodAnalyzerClass_ConstructorImproper_ThrowMoodAnalysisException()
+        {
+            string expected = "Constructor Not Found";
+            try
+            {
+                object obj = moodAnalyzerFactory.MoodAnalyzerParameterisedConstructor("MoodAnalyzerFactory.MoodAnalyzerParaneterisedConstructor", "MoodAnalyzerParameterisedConstructor");
+            }
+            catch(CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
             }
         }
     }
